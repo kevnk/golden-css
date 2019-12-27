@@ -1,0 +1,307 @@
+$gr: 1.61803398875; // The Golden Ratio
+
+$spacer: 1.5rem !default; // use rem
+$spacers: () !default;
+$spacers: (
+  0: 0,
+  1: $spacer / $gr / $gr / $gr,
+  2: $spacer / $gr / $gr,
+  3: $spacer / $gr,
+  4: $spacer,
+  5: $spacer * $gr,
+  6: $spacer * $gr * $gr,
+  7: $spacer * $gr * $gr * $gr
+);
+
+$spacer-xxs: map-get($spacers, 1) !default; // 0.3541rem / 5.665984px
+$spacer-xs: map-get($spacers, 2) !default; // 0.57295rem / 9.167568px
+$spacer-sm: map-get($spacers, 3) !default; // 0.92705rem / 14.83312px
+$spacer-md: map-get($spacers, 4) !default; // 1.5rem / 24px
+$spacer-lg: map-get($spacers, 5) !default; // 2.42705rem / 38.8328px
+$spacer-xl: map-get($spacers, 6) !default; // 3.92705rem / 62.83152px
+$spacer-xxl: map-get($spacers, 7) !default; // 6.3541rem / 101.66144px
+
+$spacer-3xs: $spacer-xxs / $gr; // 0.21885rem / 3.5016px
+$spacer-3xl: $spacer-xxl * $gr; // 10.2809rem / 164.4944px
+
+$sizes: () !default;
+$sizes: map-merge(
+  (
+    75: 75%,
+    66: 100% / 3 * 2,
+    50: 50%,
+    33: 100% / 3,
+    25: 25%,
+    7: 100%,
+    6: 100% / $gr,
+    5: 100% / $gr / $gr,
+    4: 100% / $gr / $gr / $gr,
+    3: 100% / $gr / $gr / $gr / $gr,
+    2: 100% / $gr / $gr / $gr / $gr / $gr,
+    1: 100% / $gr / $gr / $gr / $gr / $gr / $gr,
+    0: 100% / $gr / $gr / $gr / $gr / $gr / $gr / $gr
+  ),
+  $sizes
+);
+
+// Paragraphs
+
+$paragraph-margin-bottom: $spacer !default;
+
+// Grid
+
+$grid-gutter-width: $spacer !default;
+
+// Components
+
+$border-width: $spacer-3xs / $gr !default;
+
+$border-radius: $spacer-3xs !default;
+$border-radius-lg: $spacer-xxs !default;
+$border-radius-sm: $spacer-3xs !default;
+
+// Typography
+
+// $line-height-base matches $spacer when $font-size-base is 1rem
+// which is important to keep golden ratio vertical rhythm with text
+$line-height-base: strip-unit($spacer) !default;
+
+$font-size-base: 1rem !default;
+$font-size-lg: $font-size-base * 1.375 !default;
+$font-size-sm: $font-size-base * 0.875 !default;
+
+$line-height-lg: $line-height-base / strip-unit($font-size-lg) !default;
+$line-height-sm: $line-height-base / $gr / strip-unit($font-size-sm) !default;
+
+$h1-font-size: $font-size-base * $gr * 2.5 !default;
+$h2-font-size: $font-size-base * $gr * 2.125 !default;
+$h3-font-size: $font-size-base * $gr * 1.75 !default;
+$h4-font-size: $font-size-base * $gr * 1.375 !default;
+$h5-font-size: $font-size-base * $gr * 1 !default;
+$h6-font-size: $font-size-lg !default;
+
+$h1-line-height: $line-height-base * $gr * $gr / strip-unit($h1-font-size) !default;
+$h2-line-height: $line-height-base * $gr * $gr / strip-unit($h2-font-size) !default;
+$h3-line-height: $line-height-base * $gr * $gr / strip-unit($h3-font-size) !default;
+$h4-line-height: $line-height-base * $gr / strip-unit($h4-font-size) !default;
+$h5-line-height: $line-height-base * $gr / strip-unit($h5-font-size) !default;
+$h6-line-height: $line-height-lg !default;
+
+$headings-margin-bottom: $spacer !default;
+
+$display1-size: $h1-font-size !default;
+$display2-size: $h2-font-size !default;
+$display3-size: $h3-font-size !default;
+$display4-size: $h4-font-size !default;
+
+$display-line-height: 1.2 !default;
+
+$lead-font-size: $font-size-lg !default;
+$lead-line-height: $line-height-lg !default;
+
+$small-font-size: 100% / $gr !default;
+
+$blockquote-font-size: $font-size-base !default;
+
+$mark-padding: $spacer-3xs !default;
+
+$list-inline-padding: $spacer-xs !default;
+
+// Tables
+
+$table-cell-padding: $spacer-xs !default;
+$table-cell-padding-sm: $spacer-xxs !default;
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-padding-y: $spacer-xxs !default;
+$input-btn-padding-x: $spacer-xs !default;
+
+$input-btn-focus-width: $spacer-3xs !default;
+
+$input-btn-padding-y-sm: $spacer-3xs !default;
+$input-btn-padding-x-sm: $spacer-xxs !default;
+
+$input-btn-padding-y-lg: $spacer-xs !default;
+$input-btn-padding-x-lg: $spacer-sm !default;
+
+// Buttons
+
+$btn-block-spacing-y: $spacer-xs !default;
+
+// Forms
+
+$label-margin-bottom: $spacer-xs !default;
+
+$form-text-margin-top: $spacer-3xs !default;
+
+$form-check-input-gutter: $spacer !default;
+$form-check-input-margin-y: $spacer-xxs !default;
+$form-check-input-margin-x: $spacer-3xs !default;
+
+$form-check-inline-margin-x: $spacer-sm !default;
+$form-check-inline-input-margin-x: $spacer-xxs !default;
+
+$form-grid-gutter-width: $spacer-xs !default;
+$form-group-margin-bottom: $spacer-sm !default;
+
+$custom-control-gutter: $spacer-xs !default;
+$custom-control-spacer-x: $spacer-sm !default;
+
+$custom-control-indicator-size: $spacer-sm !default;
+
+$custom-select-indicator-padding: $spacer-sm !default; // Extra padding to account for the presence of the background-image based indicator
+$custom-select-bg-size: $spacer-xs $spacer-sm !default; // In pixels because image dimensions
+
+$custom-range-track-height: $spacer-xs !default;
+$custom-range-track-border-radius: $spacer-sm !default;
+
+$custom-range-thumb-width: $spacer-sm !default;
+$custom-range-thumb-border-radius: $spacer-sm !default;
+
+// Navs
+
+$nav-link-padding-y: $spacer-xs !default;
+$nav-link-padding-x: $spacer-sm !default;
+
+$nav-divider-margin-y: $spacer-sm !default;
+
+// Navbar
+
+$navbar-padding-y: $spacer-sm !default;
+$navbar-padding-x: $spacer !default;
+$navbar-nav-link-padding-x: $spacer-sm !default;
+
+$navbar-toggler-padding-y: $spacer-3xs !default;
+$navbar-toggler-padding-x: $spacer-sm !default;
+
+// Dropdowns
+
+$dropdown-min-width: $spacer-3xl !default;
+$dropdown-padding-y: $spacer-xs !default;
+$dropdown-spacer: $spacer-3xs !default;
+$dropdown-item-padding-y: $spacer-xxs !default;
+$dropdown-item-padding-x: $spacer !default;
+
+// Pagination
+
+$pagination-padding-y: $spacer-xs !default;
+$pagination-padding-x: $spacer-sm !default;
+$pagination-padding-y-sm: $spacer-xxs !default;
+$pagination-padding-x-sm: $spacer-xs !default;
+$pagination-padding-y-lg: $spacer-sm !default;
+$pagination-padding-x-lg: $spacer !default;
+$pagination-line-height: $line-height-base !default;
+
+// Jumbotron
+
+$jumbotron-padding: $spacer-lg !default;
+
+// Cards
+
+$card-spacer-y: $spacer-sm !default;
+$card-spacer-x: $spacer !default;
+
+$card-img-overlay-padding: $spacer !default;
+
+$card-columns-gap: $spacer !default;
+
+$tooltip-padding-y: $spacer-xxs !default;
+$tooltip-padding-x: $spacer-xs !default;
+
+$tooltip-arrow-width: $spacer-sm !default;
+$tooltip-arrow-height: $spacer-xxs !default;
+
+// Popovers
+
+$popover-max-width: $spacer-3xl * $gr !default;
+$popover-header-padding-y: $spacer-xs !default;
+$popover-header-padding-x: $spacer-sm !default;
+
+$popover-arrow-width: $spacer-sm !default;
+$popover-arrow-height: $spacer-xs !default;
+
+// Toasts
+
+$toast-max-width: $spacer-3xl * $gr * $gr !default;
+$toast-padding-x: $spacer-sm !default;
+$toast-padding-y: $spacer-xxs !default;
+$toast-font-size: $font-size-base !default;
+
+// Badges
+
+$badge-font-size: 100% / $gr !default;
+$badge-padding-y: $spacer-xxs !default;
+$badge-padding-x: $spacer-xs !default;
+
+$badge-pill-padding-x: $spacer-xs !default;
+$badge-pill-border-radius: $spacer-3xl !default;
+
+// Modals
+
+// Padding applied to the modal body
+$modal-inner-padding: $spacer-sm !default;
+
+$modal-footer-margin-between: $spacer-xs !default;
+
+$modal-dialog-margin: $spacer-xs !default;
+$modal-dialog-margin-y-sm-up: $spacer !default;
+
+$modal-header-padding-y: $spacer-sm !default;
+$modal-header-padding-x: $spacer-sm !default;
+
+// Alerts
+
+$alert-padding-y: $spacer-sm !default;
+$alert-padding-x: $spacer !default;
+$alert-margin-bottom: $spacer !default;
+
+// Progress bars
+
+$progress-height: $spacer-sm !default;
+
+// List group
+
+$list-group-item-padding-y: $spacer-sm !default;
+$list-group-item-padding-x: $spacer !default;
+
+// Image thumbnails
+
+$thumbnail-padding: $spacer-xxs !default;
+
+// Breadcrumbs
+
+$breadcrumb-padding-y: $spacer-xs !default;
+$breadcrumb-padding-x: $spacer-sm !default;
+$breadcrumb-item-padding: $spacer-xs !default;
+
+$breadcrumb-margin-bottom: $spacer !default;
+
+// Carousel
+
+$carousel-indicator-width: $spacer-lg !default;
+$carousel-indicator-height: $spacer-3xs !default;
+$carousel-indicator-hit-area-height: $spacer-xs !default;
+$carousel-indicator-spacer: $spacer-3xs !default;
+
+$carousel-caption-width: 100% / $gr !default;
+
+$carousel-control-icon-width: $spacer !default;
+
+// Spinners
+
+$spinner-width: $spacer-lg !default;
+$spinner-border-width: $spacer-xxs !default;
+
+$spinner-width-sm: $spacer-sm !default;
+$spinner-height-sm: $spinner-width-sm !default;
+$spinner-border-width-sm: $spacer-xxs !default;
+
+// Code
+
+$kbd-padding-y: $spacer-xxs !default;
+$kbd-padding-x: $spacer-xs !default;
+
+$pre-scrollable-max-height: $spacer-3xl * $gr * $gr !default;

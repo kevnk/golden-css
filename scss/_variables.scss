@@ -28,6 +28,7 @@ $spacer-3xl: $spacer-xxl * $gr; // 10.2809rem / 164.4944px
   --spacer-xs: #{$spacer-xs};
   --spacer-sm: #{$spacer-sm};
   --spacer-md: #{$spacer-md};
+  --spacer: #{$spacer};
   --spacer-lg: #{$spacer-lg};
   --spacer-xl: #{$spacer-xl};
   --spacer-xxl: #{$spacer-xxl};
@@ -109,6 +110,7 @@ $h5-line-height: $line-height-base * $gr / strip-unit($h5-font-size) !default;
 $h6-line-height: $line-height-lg !default;
 
 $headings-letter-spacing: 0 !default;
+$headings-text-transform: none !default;
 $lead-letter-spacing: 0 !default;
 
 $headings-margin-bottom: $spacer !default;

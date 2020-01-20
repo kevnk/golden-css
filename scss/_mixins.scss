@@ -1,0 +1,20 @@
+@import '~bootstrap/scss/mixins';
+
+@mixin make-shadow(
+  $horzDistance: 0,
+  $vertDistance: 1,
+  $spread: 1,
+  $percent: 0.05,
+  $color: $dark
+) {
+  box-shadow: ($horzDistance * 1px) ($vertDistance * 1px) ($spread * 1px)
+      rgba($color, $percent),
+    ($horzDistance * 2px) ($vertDistance * 2px) ($spread * 2px)
+      rgba($color, $percent),
+    ($horzDistance * 4px) ($vertDistance * 4px) ($spread * 4px)
+      rgba($color, $percent),
+    ($horzDistance * 8px) ($vertDistance * 8px) ($spread * 8px)
+      rgba($color, $percent),
+    ($horzDistance * 16px) ($vertDistance * 16px) ($spread * 16px)
+      rgba($color, $percent);
+}

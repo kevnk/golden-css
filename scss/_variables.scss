@@ -10,7 +10,7 @@ $spacers: (
   4: $spacer,
   5: $spacer * $gr,
   6: $spacer * $gr * $gr,
-  7: $spacer * $gr * $gr * $gr
+  7: $spacer * $gr * $gr * $gr,
 );
 
 $spacer-xxs: map-get($spacers, 1) !default; // 0.3541rem / 5.665984px
@@ -20,9 +20,20 @@ $spacer-md: map-get($spacers, 4) !default; // 1.5rem / 24px
 $spacer-lg: map-get($spacers, 5) !default; // 2.42705rem / 38.8328px
 $spacer-xl: map-get($spacers, 6) !default; // 3.92705rem / 62.83152px
 $spacer-xxl: map-get($spacers, 7) !default; // 6.3541rem / 101.66144px
-
 $spacer-3xs: $spacer-xxs / $gr; // 0.21885rem / 3.5016px
 $spacer-3xl: $spacer-xxl * $gr; // 10.2809rem / 164.4944px
+
+:root {
+  --spacer-xxs: #{$spacer-xxs};
+  --spacer-xs: #{$spacer-xs};
+  --spacer-sm: #{$spacer-sm};
+  --spacer-md: #{$spacer-md};
+  --spacer-lg: #{$spacer-lg};
+  --spacer-xl: #{$spacer-xl};
+  --spacer-xxl: #{$spacer-xxl};
+  --spacer-3xs: #{$spacer-3xs};
+  --spacer-3xl: #{$spacer-3xl};
+}
 
 $sizes: () !default;
 $sizes: map-merge(
@@ -39,7 +50,7 @@ $sizes: map-merge(
     3: 100% / $gr / $gr / $gr / $gr,
     2: 100% / $gr / $gr / $gr / $gr / $gr,
     1: 100% / $gr / $gr / $gr / $gr / $gr / $gr,
-    0: 100% / $gr / $gr / $gr / $gr / $gr / $gr / $gr
+    0: 100% / $gr / $gr / $gr / $gr / $gr / $gr / $gr,
   ),
   $sizes
 );
@@ -47,10 +58,20 @@ $sizes: map-merge(
 // Paragraphs
 
 $paragraph-margin-bottom: $spacer !default;
+$body-letter-spacing: 0 !default;
 
 // Grid
 
 $grid-gutter-width: $spacer !default;
+
+$grid-breakpoints: (
+  xxs: 0,
+  xs: 320px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+) !default;
 
 // Components
 
@@ -87,6 +108,9 @@ $h4-line-height: $line-height-base * $gr / strip-unit($h4-font-size) !default;
 $h5-line-height: $line-height-base * $gr / strip-unit($h5-font-size) !default;
 $h6-line-height: $line-height-lg !default;
 
+$headings-letter-spacing: 0 !default;
+$lead-letter-spacing: 0 !default;
+
 $headings-margin-bottom: $spacer !default;
 
 $display1-size: $h1-font-size !default;
@@ -109,22 +133,22 @@ $list-inline-padding: $spacer-xs !default;
 
 // Tables
 
-$table-cell-padding: $spacer-xs !default;
-$table-cell-padding-sm: $spacer-xxs !default;
+$table-cell-padding: $spacer-xs / 2 $spacer-xs !default;
+$table-cell-padding-sm: $spacer-xxs / 2 $spacer-xxs !default;
 
 // Buttons + Forms
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y: $spacer-xxs !default;
+$input-btn-padding-y: $spacer-xs / 2 !default;
 $input-btn-padding-x: $spacer-xs !default;
 
 $input-btn-focus-width: $spacer-3xs !default;
 
-$input-btn-padding-y-sm: $spacer-3xs !default;
+$input-btn-padding-y-sm: $spacer-xxs / 2 !default;
 $input-btn-padding-x-sm: $spacer-xxs !default;
 
-$input-btn-padding-y-lg: $spacer-xs !default;
+$input-btn-padding-y-lg: $spacer-sm / 2 !default;
 $input-btn-padding-x-lg: $spacer-sm !default;
 
 // Buttons
@@ -138,7 +162,7 @@ $label-margin-bottom: $spacer-xs !default;
 $form-text-margin-top: $spacer-3xs !default;
 
 $form-check-input-gutter: $spacer !default;
-$form-check-input-margin-y: $spacer-xxs !default;
+$form-check-input-margin-y: $spacer-xs / 2 !default;
 $form-check-input-margin-x: $spacer-3xs !default;
 
 $form-check-inline-margin-x: $spacer-sm !default;
@@ -163,35 +187,35 @@ $custom-range-thumb-border-radius: $spacer-sm !default;
 
 // Navs
 
-$nav-link-padding-y: $spacer-xs !default;
+$nav-link-padding-y: $spacer-sm / 2 !default;
 $nav-link-padding-x: $spacer-sm !default;
 
 $nav-divider-margin-y: $spacer-sm !default;
 
 // Navbar
 
-$navbar-padding-y: $spacer-sm !default;
+$navbar-padding-y: $spacer / 2 !default;
 $navbar-padding-x: $spacer !default;
 $navbar-nav-link-padding-x: $spacer-sm !default;
 
-$navbar-toggler-padding-y: $spacer-3xs !default;
+$navbar-toggler-padding-y: $spacer-xxs / 2 !default;
 $navbar-toggler-padding-x: $spacer-sm !default;
 
 // Dropdowns
 
 $dropdown-min-width: $spacer-3xl !default;
-$dropdown-padding-y: $spacer-xs !default;
+$dropdown-padding-y: $spacer-sm / 2 !default;
 $dropdown-spacer: $spacer-3xs !default;
-$dropdown-item-padding-y: $spacer-xxs !default;
+$dropdown-item-padding-y: $spacer-xs / 2 !default;
 $dropdown-item-padding-x: $spacer !default;
 
 // Pagination
 
-$pagination-padding-y: $spacer-xs !default;
+$pagination-padding-y: $spacer-sm / 2 !default;
 $pagination-padding-x: $spacer-sm !default;
-$pagination-padding-y-sm: $spacer-xxs !default;
+$pagination-padding-y-sm: $spacer-xs / 2 !default;
 $pagination-padding-x-sm: $spacer-xs !default;
-$pagination-padding-y-lg: $spacer-sm !default;
+$pagination-padding-y-lg: $spacer / 2 !default;
 $pagination-padding-x-lg: $spacer !default;
 $pagination-line-height: $line-height-base !default;
 
@@ -201,14 +225,14 @@ $jumbotron-padding: $spacer-lg !default;
 
 // Cards
 
-$card-spacer-y: $spacer-sm !default;
+$card-spacer-y: $spacer / 2 !default;
 $card-spacer-x: $spacer !default;
 
 $card-img-overlay-padding: $spacer !default;
 
 $card-columns-gap: $spacer !default;
 
-$tooltip-padding-y: $spacer-xxs !default;
+$tooltip-padding-y: $spacer-xs / 2 !default;
 $tooltip-padding-x: $spacer-xs !default;
 
 $tooltip-arrow-width: $spacer-sm !default;
@@ -217,7 +241,7 @@ $tooltip-arrow-height: $spacer-xxs !default;
 // Popovers
 
 $popover-max-width: $spacer-3xl * $gr !default;
-$popover-header-padding-y: $spacer-xs !default;
+$popover-header-padding-y: $spacer-sm / 2 !default;
 $popover-header-padding-x: $spacer-sm !default;
 
 $popover-arrow-width: $spacer-sm !default;
@@ -227,7 +251,7 @@ $popover-arrow-height: $spacer-xs !default;
 
 $toast-max-width: $spacer-3xl * $gr * $gr !default;
 $toast-padding-x: $spacer-sm !default;
-$toast-padding-y: $spacer-xxs !default;
+$toast-padding-y: $spacer / 2 !default;
 $toast-font-size: $font-size-base !default;
 
 // Badges
@@ -249,12 +273,12 @@ $modal-footer-margin-between: $spacer-xs !default;
 $modal-dialog-margin: $spacer-xs !default;
 $modal-dialog-margin-y-sm-up: $spacer !default;
 
-$modal-header-padding-y: $spacer-sm !default;
+$modal-header-padding-y: $spacer-sm / 2 !default;
 $modal-header-padding-x: $spacer-sm !default;
 
 // Alerts
 
-$alert-padding-y: $spacer-sm !default;
+$alert-padding-y: $spacer / 2 !default;
 $alert-padding-x: $spacer !default;
 $alert-margin-bottom: $spacer !default;
 
@@ -264,7 +288,7 @@ $progress-height: $spacer-sm !default;
 
 // List group
 
-$list-group-item-padding-y: $spacer-sm !default;
+$list-group-item-padding-y: $spacer / 2 !default;
 $list-group-item-padding-x: $spacer !default;
 
 // Image thumbnails
@@ -273,7 +297,7 @@ $thumbnail-padding: $spacer-xxs !default;
 
 // Breadcrumbs
 
-$breadcrumb-padding-y: $spacer-xs !default;
+$breadcrumb-padding-y: $spacer-sm / 2 !default;
 $breadcrumb-padding-x: $spacer-sm !default;
 $breadcrumb-item-padding: $spacer-xs !default;
 
@@ -301,7 +325,10 @@ $spinner-border-width-sm: $spacer-xxs !default;
 
 // Code
 
-$kbd-padding-y: $spacer-xxs !default;
+$kbd-padding-y: $spacer-xs / 2 !default;
 $kbd-padding-x: $spacer-xs !default;
 
 $pre-scrollable-max-height: $spacer-3xl * $gr * $gr !default;
+
+// All remaining bootstrap variables
+@import '~bootstrap/scss/variables';

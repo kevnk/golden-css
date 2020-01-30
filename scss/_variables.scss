@@ -127,8 +127,8 @@ $display4-size: $h4-font-size !default;
 
 $display-line-height: 1.2 !default;
 
-$lead-font-size: $font-size-lg !default;
-$lead-line-height: $line-height-lg !default;
+$lead-font-size: $spacer !default;
+$lead-line-height: $gr !default;
 
 $small-font-size: 100% / $gr !default;
 

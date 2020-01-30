@@ -31,12 +31,12 @@ html.development {
       text-align: center;
       background: #000;
       color: #fff;
-      font-size: $spacer-sm * 0.85;
-      line-height: $spacer-sm;
+      font-size: $spacer-3 * 0.85;
+      line-height: $spacer-3;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
         'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-      padding: $spacer-xs $spacer-sm;
+      padding: $spacer-2 $spacer-3;
       z-index: 99999999;
       @include media-breakpoint-up(xs) {
         content: 'xs #{map-get($grid-breakpoints, xs)}';

@@ -4,38 +4,41 @@ $root-selector: #app !default;
 
 $spacer: 1.5rem !default; // use rem
 $spacers: () !default;
-$spacers: (
-  0: 0,
-  1: $spacer / $gr / $gr / $gr,
-  2: $spacer / $gr / $gr,
-  3: $spacer / $gr,
-  4: $spacer,
-  5: $spacer * $gr,
-  6: $spacer * $gr * $gr,
-  7: $spacer * $gr * $gr * $gr,
+$spacers: map-merge(
+  (
+    0: 0,
+    1: $spacer / $gr / $gr / $gr,
+    2: $spacer / $gr / $gr,
+    3: $spacer / $gr,
+    4: $spacer,
+    5: $spacer * $gr,
+    6: $spacer * $gr * $gr,
+    7: $spacer * $gr * $gr * $gr,
+  ),
+  $spacers
 );
 
-$spacer-xxs: map-get($spacers, 1) !default; // 0.3541rem / 5.665984px
-$spacer-xs: map-get($spacers, 2) !default; // 0.57295rem / 9.167568px
-$spacer-sm: map-get($spacers, 3) !default; // 0.92705rem / 14.83312px
-$spacer-md: map-get($spacers, 4) !default; // 1.5rem / 24px
-$spacer-lg: map-get($spacers, 5) !default; // 2.42705rem / 38.8328px
-$spacer-xl: map-get($spacers, 6) !default; // 3.92705rem / 62.83152px
-$spacer-xxl: map-get($spacers, 7) !default; // 6.3541rem / 101.66144px
-$spacer-3xs: $spacer-xxs / $gr; // 0.21885rem / 3.5016px
-$spacer-3xl: $spacer-xxl * $gr; // 10.2809rem / 164.4944px
+$spacer--: map-get($spacers, 1) / $gr !default; // 0.21885rem / 3.5016px
+$spacer-1: map-get($spacers, 1) !default; // 0.3541rem / 5.665984px
+$spacer-2: map-get($spacers, 2) !default; // 0.57295rem / 9.167568px
+$spacer-3: map-get($spacers, 3) !default; // 0.92705rem / 14.83312px
+$spacer-4: map-get($spacers, 4) !default; // 1.5rem / 24px
+$spacer-5: map-get($spacers, 5) !default; // 2.42705rem / 38.8328px
+$spacer-6: map-get($spacers, 6) !default; // 3.92705rem / 62.83152px
+$spacer-7: map-get($spacers, 7) !default; // 6.3541rem / 101.66144px
+$spacer-8: $spacer-7 * $gr !default; // 10.2809rem / 164.4944px
 
 :root {
-  --spacer-xxs: #{$spacer-xxs};
-  --spacer-xs: #{$spacer-xs};
-  --spacer-sm: #{$spacer-sm};
-  --spacer-md: #{$spacer-md};
+  --spacer--: #{$spacer--};
+  --spacer-1: #{$spacer-1};
+  --spacer-2: #{$spacer-2};
+  --spacer-3: #{$spacer-3};
+  --spacer-4: #{$spacer-4};
   --spacer: #{$spacer};
-  --spacer-lg: #{$spacer-lg};
-  --spacer-xl: #{$spacer-xl};
-  --spacer-xxl: #{$spacer-xxl};
-  --spacer-3xs: #{$spacer-3xs};
-  --spacer-3xl: #{$spacer-3xl};
+  --spacer-5: #{$spacer-5};
+  --spacer-6: #{$spacer-6};
+  --spacer-7: #{$spacer-7};
+  --spacer-8: #{$spacer-8};
 }
 
 $sizes: () !default;
@@ -78,11 +81,11 @@ $grid-breakpoints: (
 
 // Components
 
-$border-width: $spacer-3xs / $gr !default;
+$border-width: $spacer-- / $gr !default;
 
-$border-radius: $spacer-3xs !default;
-$border-radius-lg: $spacer-xxs !default;
-$border-radius-sm: $spacer-3xs !default;
+$border-radius: $spacer-- !default;
+$border-radius-lg: $spacer-1 !default;
+$border-radius-sm: $spacer-- !default;
 
 // Typography
 
@@ -131,101 +134,101 @@ $small-font-size: 100% / $gr !default;
 
 $blockquote-font-size: $font-size-base !default;
 
-$mark-padding: $spacer-3xs !default;
+$mark-padding: $spacer-- !default;
 
-$list-inline-padding: $spacer-xs !default;
+$list-inline-padding: $spacer-2 !default;
 
 // Tables
 
-$table-cell-padding: $spacer-xs / 2 $spacer-xs !default;
-$table-cell-padding-sm: $spacer-xxs / 2 $spacer-xxs !default;
+$table-cell-padding: $spacer-2 / 2 $spacer-2 !default;
+$table-cell-padding-sm: $spacer-1 / 2 $spacer-1 !default;
 
 // Buttons + Forms
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y: $spacer-xs / 2 !default;
-$input-btn-padding-x: $spacer-xs !default;
+$input-btn-padding-y: $spacer-2 / 2 !default;
+$input-btn-padding-x: $spacer-2 !default;
 
-$input-btn-focus-width: $spacer-3xs !default;
+$input-btn-focus-width: $spacer-- !default;
 
-$input-btn-padding-y-sm: $spacer-xxs / 2 !default;
-$input-btn-padding-x-sm: $spacer-xxs !default;
+$input-btn-padding-y-sm: $spacer-1 / 2 !default;
+$input-btn-padding-x-sm: $spacer-1 !default;
 
-$input-btn-padding-y-lg: $spacer-sm / 2 !default;
-$input-btn-padding-x-lg: $spacer-sm !default;
+$input-btn-padding-y-lg: $spacer-3 / 2 !default;
+$input-btn-padding-x-lg: $spacer-3 !default;
 
 // Buttons
 
-$btn-block-spacing-y: $spacer-xs !default;
+$btn-block-spacing-y: $spacer-2 !default;
 
 // Forms
 
-$label-margin-bottom: $spacer-xs !default;
+$label-margin-bottom: $spacer-2 !default;
 
-$form-text-margin-top: $spacer-3xs !default;
+$form-text-margin-top: $spacer-- !default;
 
 $form-check-input-gutter: $spacer !default;
-$form-check-input-margin-y: $spacer-xs / 2 !default;
-$form-check-input-margin-x: $spacer-3xs !default;
+$form-check-input-margin-y: $spacer-2 / 2 !default;
+$form-check-input-margin-x: $spacer-- !default;
 
-$form-check-inline-margin-x: $spacer-sm !default;
-$form-check-inline-input-margin-x: $spacer-xxs !default;
+$form-check-inline-margin-x: $spacer-3 !default;
+$form-check-inline-input-margin-x: $spacer-1 !default;
 
-$form-grid-gutter-width: $spacer-xs !default;
-$form-group-margin-bottom: $spacer-sm !default;
+$form-grid-gutter-width: $spacer-2 !default;
+$form-group-margin-bottom: $spacer-3 !default;
 
-$custom-control-gutter: $spacer-xs !default;
-$custom-control-spacer-x: $spacer-sm !default;
+$custom-control-gutter: $spacer-2 !default;
+$custom-control-spacer-x: $spacer-3 !default;
 
-$custom-control-indicator-size: $spacer-sm !default;
+$custom-control-indicator-size: $spacer-3 !default;
 
-$custom-select-indicator-padding: $spacer-sm !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-bg-size: $spacer-xs $spacer-sm !default; // In pixels because image dimensions
+$custom-select-indicator-padding: $spacer-3 !default; // Extra padding to account for the presence of the background-image based indicator
+$custom-select-bg-size: $spacer-2 $spacer-3 !default; // In pixels because image dimensions
 
-$custom-range-track-height: $spacer-xs !default;
-$custom-range-track-border-radius: $spacer-sm !default;
+$custom-range-track-height: $spacer-2 !default;
+$custom-range-track-border-radius: $spacer-3 !default;
 
-$custom-range-thumb-width: $spacer-sm !default;
-$custom-range-thumb-border-radius: $spacer-sm !default;
+$custom-range-thumb-width: $spacer-3 !default;
+$custom-range-thumb-border-radius: $spacer-3 !default;
 
 // Navs
 
-$nav-link-padding-y: $spacer-sm / 2 !default;
-$nav-link-padding-x: $spacer-sm !default;
+$nav-link-padding-y: $spacer-3 / 2 !default;
+$nav-link-padding-x: $spacer-3 !default;
 
-$nav-divider-margin-y: $spacer-sm !default;
+$nav-divider-margin-y: $spacer-3 !default;
 
 // Navbar
 
 $navbar-padding-y: $spacer / 2 !default;
 $navbar-padding-x: $spacer !default;
-$navbar-nav-link-padding-x: $spacer-sm !default;
+$navbar-nav-link-padding-x: $spacer-3 !default;
 
-$navbar-toggler-padding-y: $spacer-xxs / 2 !default;
-$navbar-toggler-padding-x: $spacer-sm !default;
+$navbar-toggler-padding-y: $spacer-1 / 2 !default;
+$navbar-toggler-padding-x: $spacer-3 !default;
 
 // Dropdowns
 
-$dropdown-min-width: $spacer-3xl !default;
-$dropdown-padding-y: $spacer-sm / 2 !default;
-$dropdown-spacer: $spacer-3xs !default;
-$dropdown-item-padding-y: $spacer-xs / 2 !default;
+$dropdown-min-width: $spacer-8 !default;
+$dropdown-padding-y: $spacer-3 / 2 !default;
+$dropdown-spacer: $spacer-- !default;
+$dropdown-item-padding-y: $spacer-2 / 2 !default;
 $dropdown-item-padding-x: $spacer !default;
 
 // Pagination
 
-$pagination-padding-y: $spacer-sm / 2 !default;
-$pagination-padding-x: $spacer-sm !default;
-$pagination-padding-y-sm: $spacer-xs / 2 !default;
-$pagination-padding-x-sm: $spacer-xs !default;
+$pagination-padding-y: $spacer-3 / 2 !default;
+$pagination-padding-x: $spacer-3 !default;
+$pagination-padding-y-sm: $spacer-2 / 2 !default;
+$pagination-padding-x-sm: $spacer-2 !default;
 $pagination-padding-y-lg: $spacer / 2 !default;
 $pagination-padding-x-lg: $spacer !default;
 $pagination-line-height: $line-height-base !default;
 
 // Jumbotron
 
-$jumbotron-padding: $spacer-lg !default;
+$jumbotron-padding: $spacer-5 !default;
 
 // Cards
 
@@ -236,49 +239,49 @@ $card-img-overlay-padding: $spacer !default;
 
 $card-columns-gap: $spacer !default;
 
-$tooltip-padding-y: $spacer-xs / 2 !default;
-$tooltip-padding-x: $spacer-xs !default;
+$tooltip-padding-y: $spacer-2 / 2 !default;
+$tooltip-padding-x: $spacer-2 !default;
 
-$tooltip-arrow-width: $spacer-sm !default;
-$tooltip-arrow-height: $spacer-xxs !default;
+$tooltip-arrow-width: $spacer-3 !default;
+$tooltip-arrow-height: $spacer-1 !default;
 
 // Popovers
 
-$popover-max-width: $spacer-3xl * $gr !default;
-$popover-header-padding-y: $spacer-sm / 2 !default;
-$popover-header-padding-x: $spacer-sm !default;
+$popover-max-width: $spacer-8 * $gr !default;
+$popover-header-padding-y: $spacer-3 / 2 !default;
+$popover-header-padding-x: $spacer-3 !default;
 
-$popover-arrow-width: $spacer-sm !default;
-$popover-arrow-height: $spacer-xs !default;
+$popover-arrow-width: $spacer-3 !default;
+$popover-arrow-height: $spacer-2 !default;
 
 // Toasts
 
-$toast-max-width: $spacer-3xl * $gr * $gr !default;
-$toast-padding-x: $spacer-sm !default;
+$toast-max-width: $spacer-8 * $gr * $gr !default;
+$toast-padding-x: $spacer-3 !default;
 $toast-padding-y: $spacer / 2 !default;
 $toast-font-size: $font-size-base !default;
 
 // Badges
 
 $badge-font-size: 100% / $gr !default;
-$badge-padding-y: $spacer-xxs !default;
-$badge-padding-x: $spacer-xs !default;
+$badge-padding-y: $spacer-1 !default;
+$badge-padding-x: $spacer-2 !default;
 
-$badge-pill-padding-x: $spacer-xs !default;
-$badge-pill-border-radius: $spacer-3xl !default;
+$badge-pill-padding-x: $spacer-2 !default;
+$badge-pill-border-radius: $spacer-8 !default;
 
 // Modals
 
 // Padding applied to the modal body
-$modal-inner-padding: $spacer-sm !default;
+$modal-inner-padding: $spacer-3 !default;
 
-$modal-footer-margin-between: $spacer-xs !default;
+$modal-footer-margin-between: $spacer-2 !default;
 
-$modal-dialog-margin: $spacer-xs !default;
+$modal-dialog-margin: $spacer-2 !default;
 $modal-dialog-margin-y-sm-up: $spacer !default;
 
-$modal-header-padding-y: $spacer-sm / 2 !default;
-$modal-header-padding-x: $spacer-sm !default;
+$modal-header-padding-y: $spacer-3 / 2 !default;
+$modal-header-padding-x: $spacer-3 !default;
 
 // Alerts
 
@@ -288,7 +291,7 @@ $alert-margin-bottom: $spacer !default;
 
 // Progress bars
 
-$progress-height: $spacer-sm !default;
+$progress-height: $spacer-3 !default;
 
 // List group
 
@@ -297,22 +300,22 @@ $list-group-item-padding-x: $spacer !default;
 
 // Image thumbnails
 
-$thumbnail-padding: $spacer-xxs !default;
+$thumbnail-padding: $spacer-1 !default;
 
 // Breadcrumbs
 
-$breadcrumb-padding-y: $spacer-sm / 2 !default;
-$breadcrumb-padding-x: $spacer-sm !default;
-$breadcrumb-item-padding: $spacer-xs !default;
+$breadcrumb-padding-y: $spacer-3 / 2 !default;
+$breadcrumb-padding-x: $spacer-3 !default;
+$breadcrumb-item-padding: $spacer-2 !default;
 
 $breadcrumb-margin-bottom: $spacer !default;
 
 // Carousel
 
-$carousel-indicator-width: $spacer-lg !default;
-$carousel-indicator-height: $spacer-3xs !default;
-$carousel-indicator-hit-area-height: $spacer-xs !default;
-$carousel-indicator-spacer: $spacer-3xs !default;
+$carousel-indicator-width: $spacer-5 !default;
+$carousel-indicator-height: $spacer-- !default;
+$carousel-indicator-hit-area-height: $spacer-2 !default;
+$carousel-indicator-spacer: $spacer-- !default;
 
 $carousel-caption-width: 100% / $gr !default;
 
@@ -320,19 +323,19 @@ $carousel-control-icon-width: $spacer !default;
 
 // Spinners
 
-$spinner-width: $spacer-lg !default;
-$spinner-border-width: $spacer-xxs !default;
+$spinner-width: $spacer-5 !default;
+$spinner-border-width: $spacer-1 !default;
 
-$spinner-width-sm: $spacer-sm !default;
+$spinner-width-sm: $spacer-3 !default;
 $spinner-height-sm: $spinner-width-sm !default;
-$spinner-border-width-sm: $spacer-xxs !default;
+$spinner-border-width-sm: $spacer-1 !default;
 
 // Code
 
-$kbd-padding-y: $spacer-xs / 2 !default;
-$kbd-padding-x: $spacer-xs !default;
+$kbd-padding-y: $spacer-2 / 2 !default;
+$kbd-padding-x: $spacer-2 !default;
 
-$pre-scrollable-max-height: $spacer-3xl * $gr * $gr !default;
+$pre-scrollable-max-height: $spacer-8 * $gr * $gr !default;
 
 // All remaining bootstrap variables
 @import '~bootstrap/scss/variables';

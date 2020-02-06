@@ -1,4 +1,4 @@
-$gr: 1.61803398875; // The Golden Ratio
+$golden-ratio: 1.61803398875;
 
 $root-selector: #app !default;
 
@@ -7,18 +7,18 @@ $spacers: () !default;
 $spacers: map-merge(
   (
     0: 0,
-    1: $spacer / $gr / $gr / $gr,
-    2: $spacer / $gr / $gr,
-    3: $spacer / $gr,
+    1: $spacer / $golden-ratio / $golden-ratio / $golden-ratio,
+    2: $spacer / $golden-ratio / $golden-ratio,
+    3: $spacer / $golden-ratio,
     4: $spacer,
-    5: $spacer * $gr,
-    6: $spacer * $gr * $gr,
-    7: $spacer * $gr * $gr * $gr,
+    5: $spacer * $golden-ratio,
+    6: $spacer * $golden-ratio * $golden-ratio,
+    7: $spacer * $golden-ratio * $golden-ratio * $golden-ratio,
   ),
   $spacers
 );
 
-$spacer--: map-get($spacers, 1) / $gr !default; // 0.21885rem / 3.5016px
+$spacer-tiny: map-get($spacers, 1) / $golden-ratio !default; // 0.21885rem / 3.5016px
 $spacer-1: map-get($spacers, 1) !default; // 0.3541rem / 5.665984px
 $spacer-2: map-get($spacers, 2) !default; // 0.57295rem / 9.167568px
 $spacer-3: map-get($spacers, 3) !default; // 0.92705rem / 14.83312px
@@ -26,19 +26,18 @@ $spacer-4: map-get($spacers, 4) !default; // 1.5rem / 24px
 $spacer-5: map-get($spacers, 5) !default; // 2.42705rem / 38.8328px
 $spacer-6: map-get($spacers, 6) !default; // 3.92705rem / 62.83152px
 $spacer-7: map-get($spacers, 7) !default; // 6.3541rem / 101.66144px
-$spacer-8: $spacer-7 * $gr !default; // 10.2809rem / 164.4944px
+$spacer-huge: $spacer-7 * $golden-ratio !default; // 10.2809rem / 164.4944px
 
 :root {
-  --spacer--: #{$spacer--};
+  --spacer-tiny: #{$spacer-tiny};
   --spacer-1: #{$spacer-1};
   --spacer-2: #{$spacer-2};
   --spacer-3: #{$spacer-3};
   --spacer-4: #{$spacer-4};
-  --spacer: #{$spacer};
   --spacer-5: #{$spacer-5};
   --spacer-6: #{$spacer-6};
   --spacer-7: #{$spacer-7};
-  --spacer-8: #{$spacer-8};
+  --spacer-huge: #{$spacer-huge};
 }
 
 $sizes: () !default;
@@ -50,13 +49,16 @@ $sizes: map-merge(
     33: 100% / 3,
     25: 25%,
     7: 100%,
-    6: 100% / $gr,
-    5: 100% / $gr / $gr,
-    4: 100% / $gr / $gr / $gr,
-    3: 100% / $gr / $gr / $gr / $gr,
-    2: 100% / $gr / $gr / $gr / $gr / $gr,
-    1: 100% / $gr / $gr / $gr / $gr / $gr / $gr,
-    0: 100% / $gr / $gr / $gr / $gr / $gr / $gr / $gr,
+    6: 100% / $golden-ratio,
+    5: 100% / $golden-ratio / $golden-ratio,
+    4: 100% / $golden-ratio / $golden-ratio / $golden-ratio,
+    3: 100% / $golden-ratio / $golden-ratio / $golden-ratio / $golden-ratio,
+    2: 100% / $golden-ratio / $golden-ratio / $golden-ratio / $golden-ratio /
+      $golden-ratio,
+    1: 100% / $golden-ratio / $golden-ratio / $golden-ratio / $golden-ratio /
+      $golden-ratio / $golden-ratio,
+    0: 100% / $golden-ratio / $golden-ratio / $golden-ratio / $golden-ratio /
+      $golden-ratio / $golden-ratio / $golden-ratio,
   ),
   $sizes
 );
@@ -81,11 +83,11 @@ $grid-breakpoints: (
 
 // Components
 
-$border-width: $spacer-- / $gr !default;
+$border-width: $spacer-tiny / $golden-ratio !default;
 
-$border-radius: $spacer-- !default;
+$border-radius: $spacer-tiny !default;
 $border-radius-lg: $spacer-1 !default;
-$border-radius-sm: $spacer-- !default;
+$border-radius-sm: $spacer-tiny !default;
 
 // Typography
 
@@ -98,20 +100,23 @@ $font-size-lg: $font-size-base * 1.375 !default;
 $font-size-sm: $font-size-base * 0.875 !default;
 
 $line-height-lg: $line-height-base / strip-unit($font-size-lg) !default;
-$line-height-sm: $line-height-base / $gr / strip-unit($font-size-sm) !default;
+$line-height-sm: $line-height-base / $golden-ratio / strip-unit($font-size-sm) !default;
 
-$h1-font-size: $font-size-base * $gr * 2.5 !default;
-$h2-font-size: $font-size-base * $gr * 2.125 !default;
-$h3-font-size: $font-size-base * $gr * 1.75 !default;
-$h4-font-size: $font-size-base * $gr * 1.375 !default;
-$h5-font-size: $font-size-base * $gr * 1 !default;
+$h1-font-size: $font-size-base * $golden-ratio * 2.5 !default;
+$h2-font-size: $font-size-base * $golden-ratio * 2.125 !default;
+$h3-font-size: $font-size-base * $golden-ratio * 1.75 !default;
+$h4-font-size: $font-size-base * $golden-ratio * 1.375 !default;
+$h5-font-size: $font-size-base * $golden-ratio * 1 !default;
 $h6-font-size: $font-size-lg !default;
 
-$h1-line-height: $line-height-base * $gr * $gr / strip-unit($h1-font-size) !default;
-$h2-line-height: $line-height-base * $gr * $gr / strip-unit($h2-font-size) !default;
-$h3-line-height: $line-height-base * $gr * $gr / strip-unit($h3-font-size) !default;
-$h4-line-height: $line-height-base * $gr / strip-unit($h4-font-size) !default;
-$h5-line-height: $line-height-base * $gr / strip-unit($h5-font-size) !default;
+$h1-line-height: $line-height-base * $golden-ratio * $golden-ratio /
+  strip-unit($h1-font-size) !default;
+$h2-line-height: $line-height-base * $golden-ratio * $golden-ratio /
+  strip-unit($h2-font-size) !default;
+$h3-line-height: $line-height-base * $golden-ratio * $golden-ratio /
+  strip-unit($h3-font-size) !default;
+$h4-line-height: $line-height-base * $golden-ratio / strip-unit($h4-font-size) !default;
+$h5-line-height: $line-height-base * $golden-ratio / strip-unit($h5-font-size) !default;
 $h6-line-height: $line-height-lg !default;
 
 $headings-letter-spacing: 0 !default;
@@ -128,13 +133,13 @@ $display4-size: $h4-font-size !default;
 $display-line-height: 1.2 !default;
 
 $lead-font-size: $spacer !default;
-$lead-line-height: $gr !default;
+$lead-line-height: $golden-ratio !default;
 
-$small-font-size: 100% / $gr !default;
+$small-font-size: 100% / $golden-ratio !default;
 
 $blockquote-font-size: $font-size-base !default;
 
-$mark-padding: $spacer-- !default;
+$mark-padding: $spacer-tiny !default;
 
 $list-inline-padding: $spacer-2 !default;
 
@@ -150,7 +155,7 @@ $table-cell-padding-sm: $spacer-1 / 2 $spacer-1 !default;
 $input-btn-padding-y: $spacer-2 / 2 !default;
 $input-btn-padding-x: $spacer-2 !default;
 
-$input-btn-focus-width: $spacer-- !default;
+$input-btn-focus-width: $spacer-tiny !default;
 
 $input-btn-padding-y-sm: $spacer-1 / 2 !default;
 $input-btn-padding-x-sm: $spacer-1 !default;
@@ -166,11 +171,11 @@ $btn-block-spacing-y: $spacer-2 !default;
 
 $label-margin-bottom: $spacer-2 !default;
 
-$form-text-margin-top: $spacer-- !default;
+$form-text-margin-top: $spacer-tiny !default;
 
 $form-check-input-gutter: $spacer !default;
 $form-check-input-margin-y: $spacer-2 / 2 !default;
-$form-check-input-margin-x: $spacer-- !default;
+$form-check-input-margin-x: $spacer-tiny !default;
 
 $form-check-inline-margin-x: $spacer-3 !default;
 $form-check-inline-input-margin-x: $spacer-1 !default;
@@ -210,9 +215,9 @@ $navbar-toggler-padding-x: $spacer-3 !default;
 
 // Dropdowns
 
-$dropdown-min-width: $spacer-8 !default;
+$dropdown-min-width: $spacer-huge !default;
 $dropdown-padding-y: $spacer-3 / 2 !default;
-$dropdown-spacer: $spacer-- !default;
+$dropdown-spacer: $spacer-tiny !default;
 $dropdown-item-padding-y: $spacer-2 / 2 !default;
 $dropdown-item-padding-x: $spacer !default;
 
@@ -247,7 +252,7 @@ $tooltip-arrow-height: $spacer-1 !default;
 
 // Popovers
 
-$popover-max-width: $spacer-8 * $gr !default;
+$popover-max-width: $spacer-huge * $golden-ratio !default;
 $popover-header-padding-y: $spacer-3 / 2 !default;
 $popover-header-padding-x: $spacer-3 !default;
 
@@ -256,19 +261,19 @@ $popover-arrow-height: $spacer-2 !default;
 
 // Toasts
 
-$toast-max-width: $spacer-8 * $gr * $gr !default;
+$toast-max-width: $spacer-huge * $golden-ratio * $golden-ratio !default;
 $toast-padding-x: $spacer-3 !default;
 $toast-padding-y: $spacer / 2 !default;
 $toast-font-size: $font-size-base !default;
 
 // Badges
 
-$badge-font-size: 100% / $gr !default;
+$badge-font-size: 100% / $golden-ratio !default;
 $badge-padding-y: $spacer-1 !default;
 $badge-padding-x: $spacer-2 !default;
 
 $badge-pill-padding-x: $spacer-2 !default;
-$badge-pill-border-radius: $spacer-8 !default;
+$badge-pill-border-radius: $spacer-huge !default;
 
 // Modals
 
@@ -313,11 +318,11 @@ $breadcrumb-margin-bottom: $spacer !default;
 // Carousel
 
 $carousel-indicator-width: $spacer-5 !default;
-$carousel-indicator-height: $spacer-- !default;
+$carousel-indicator-height: $spacer-tiny !default;
 $carousel-indicator-hit-area-height: $spacer-2 !default;
-$carousel-indicator-spacer: $spacer-- !default;
+$carousel-indicator-spacer: $spacer-tiny !default;
 
-$carousel-caption-width: 100% / $gr !default;
+$carousel-caption-width: 100% / $golden-ratio !default;
 
 $carousel-control-icon-width: $spacer !default;
 
@@ -335,7 +340,7 @@ $spinner-border-width-sm: $spacer-1 !default;
 $kbd-padding-y: $spacer-2 / 2 !default;
 $kbd-padding-x: $spacer-2 !default;
 
-$pre-scrollable-max-height: $spacer-8 * $gr * $gr !default;
+$pre-scrollable-max-height: $spacer-huge * $golden-ratio * $golden-ratio !default;
 
 // All remaining bootstrap variables
 @import '~bootstrap/scss/variables';

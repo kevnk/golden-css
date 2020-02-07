@@ -1,44 +1,90 @@
-$golden-ratio: 1.61803398875;
+$root-golden-ratio: 1.61803398875;
 
 $root-selector: #app !default;
 
 $spacer: 1.5rem !default; // use rem
+
+$root-spacer-tiny: $spacer / $root-golden-ratio / $root-golden-ratio /
+  $root-golden-ratio / $root-golden-ratio !default;
+$root-spacer-1: $spacer / $root-golden-ratio / $root-golden-ratio /
+  $root-golden-ratio !default;
+$root-spacer-2: $spacer / $root-golden-ratio / $root-golden-ratio !default;
+$root-spacer-3: $spacer / $root-golden-ratio !default;
+$root-spacer-4: $spacer !default;
+$root-spacer-5: $spacer * $root-golden-ratio !default;
+$root-spacer-6: $spacer * $root-golden-ratio * $root-golden-ratio !default;
+$root-spacer-7: $spacer * $root-golden-ratio * $root-golden-ratio *
+  $root-golden-ratio !default;
+$root-spacer-huge: $root-spacer-7 * $root-golden-ratio !default;
+
+:root {
+  --golden-ratio: #{$root-golden-ratio};
+  --spacer-tiny: #{$root-spacer-tiny};
+  --spacer-1: #{$root-spacer-1};
+  --spacer-2: #{$root-spacer-2};
+  --spacer-3: #{$root-spacer-3};
+  --spacer-4: #{$root-spacer-4};
+  --spacer-5: #{$root-spacer-5};
+  --spacer-6: #{$root-spacer-6};
+  --spacer-7: #{$root-spacer-7};
+  --spacer-huge: #{$root-spacer-huge};
+}
+
+$environment: 'production' !default;
+$golden-ratio: maybe-make-var($root-golden-ratio, var(--golden-ratio)) !default;
+$spacer-tiny: maybe-make-var(
+  $root-spacer-tiny,
+  var(--spacer-tiny)
+) !default; // 0.21885rem / 3.5016px
+$spacer-1: maybe-make-var(
+  $root-spacer-1,
+  var(--spacer-1)
+) !default; // 0.3541rem / 5.665984px
+$spacer-2: maybe-make-var(
+  $root-spacer-2,
+  var(--spacer-2)
+) !default; // 0.57295rem / 9.167568px
+$spacer-3: maybe-make-var(
+  $root-spacer-3,
+  var(--spacer-3)
+) !default; // 0.92705rem / 14.83312px
+$spacer-4: maybe-make-var(
+  $root-spacer-4,
+  var(--spacer-4)
+) !default; // 1.5rem / 24px
+$spacer-5: maybe-make-var(
+  $root-spacer-5,
+  var(--spacer-5)
+) !default; // 2.42705rem / 38.8328px
+$spacer-6: maybe-make-var(
+  $root-spacer-6,
+  var(--spacer-6)
+) !default; // 3.92705rem / 62.83152px
+$spacer-7: maybe-make-var(
+  $root-spacer-7,
+  var(--spacer-7)
+) !default; // 6.3541rem / 101.66144px
+$spacer-huge: maybe-make-var(
+  $root-spacer-huge,
+  var(--spacer-huge)
+) !default; // 10.2809rem / 164.4944px
+
 $spacers: () !default;
 $spacers: map-merge(
   (
     0: 0,
-    1: $spacer / $golden-ratio / $golden-ratio / $golden-ratio,
-    2: $spacer / $golden-ratio / $golden-ratio,
-    3: $spacer / $golden-ratio,
-    4: $spacer,
-    5: $spacer * $golden-ratio,
-    6: $spacer * $golden-ratio * $golden-ratio,
-    7: $spacer * $golden-ratio * $golden-ratio * $golden-ratio,
+    tiny: $spacer-tiny,
+    1: $spacer-1,
+    2: $spacer-2,
+    3: $spacer-3,
+    4: $spacer-4,
+    5: $spacer-5,
+    6: $spacer-6,
+    7: $spacer-7,
+    huge: $spacer-huge,
   ),
   $spacers
 );
-
-$spacer-tiny: map-get($spacers, 1) / $golden-ratio !default; // 0.21885rem / 3.5016px
-$spacer-1: map-get($spacers, 1) !default; // 0.3541rem / 5.665984px
-$spacer-2: map-get($spacers, 2) !default; // 0.57295rem / 9.167568px
-$spacer-3: map-get($spacers, 3) !default; // 0.92705rem / 14.83312px
-$spacer-4: map-get($spacers, 4) !default; // 1.5rem / 24px
-$spacer-5: map-get($spacers, 5) !default; // 2.42705rem / 38.8328px
-$spacer-6: map-get($spacers, 6) !default; // 3.92705rem / 62.83152px
-$spacer-7: map-get($spacers, 7) !default; // 6.3541rem / 101.66144px
-$spacer-huge: $spacer-7 * $golden-ratio !default; // 10.2809rem / 164.4944px
-
-:root {
-  --spacer-tiny: #{$spacer-tiny};
-  --spacer-1: #{$spacer-1};
-  --spacer-2: #{$spacer-2};
-  --spacer-3: #{$spacer-3};
-  --spacer-4: #{$spacer-4};
-  --spacer-5: #{$spacer-5};
-  --spacer-6: #{$spacer-6};
-  --spacer-7: #{$spacer-7};
-  --spacer-huge: #{$spacer-huge};
-}
 
 $sizes: () !default;
 $sizes: map-merge(
@@ -49,16 +95,18 @@ $sizes: map-merge(
     33: 100% / 3,
     25: 25%,
     7: 100%,
-    6: 100% / $golden-ratio,
-    5: 100% / $golden-ratio / $golden-ratio,
-    4: 100% / $golden-ratio / $golden-ratio / $golden-ratio,
-    3: 100% / $golden-ratio / $golden-ratio / $golden-ratio / $golden-ratio,
-    2: 100% / $golden-ratio / $golden-ratio / $golden-ratio / $golden-ratio /
-      $golden-ratio,
-    1: 100% / $golden-ratio / $golden-ratio / $golden-ratio / $golden-ratio /
-      $golden-ratio / $golden-ratio,
-    0: 100% / $golden-ratio / $golden-ratio / $golden-ratio / $golden-ratio /
-      $golden-ratio / $golden-ratio / $golden-ratio,
+    6: 100% / $root-golden-ratio,
+    5: 100% / $root-golden-ratio / $root-golden-ratio,
+    4: 100% / $root-golden-ratio / $root-golden-ratio / $root-golden-ratio,
+    3: 100% / $root-golden-ratio / $root-golden-ratio / $root-golden-ratio /
+      $root-golden-ratio,
+    2: 100% / $root-golden-ratio / $root-golden-ratio / $root-golden-ratio /
+      $root-golden-ratio / $root-golden-ratio,
+    1: 100% / $root-golden-ratio / $root-golden-ratio / $root-golden-ratio /
+      $root-golden-ratio / $root-golden-ratio / $root-golden-ratio,
+    0: 100% / $root-golden-ratio / $root-golden-ratio / $root-golden-ratio /
+      $root-golden-ratio / $root-golden-ratio / $root-golden-ratio /
+      $root-golden-ratio,
   ),
   $sizes
 );
@@ -83,7 +131,7 @@ $grid-breakpoints: (
 
 // Components
 
-$border-width: $spacer-tiny / $golden-ratio !default;
+$border-width: $root-spacer-tiny / $root-golden-ratio !default;
 
 $border-radius: $spacer-tiny !default;
 $border-radius-lg: $spacer-1 !default;
@@ -100,23 +148,26 @@ $font-size-lg: $font-size-base * 1.375 !default;
 $font-size-sm: $font-size-base * 0.875 !default;
 
 $line-height-lg: $line-height-base / strip-unit($font-size-lg) !default;
-$line-height-sm: $line-height-base / $golden-ratio / strip-unit($font-size-sm) !default;
+$line-height-sm: $line-height-base / $root-golden-ratio /
+  strip-unit($font-size-sm) !default;
 
-$h1-font-size: $font-size-base * $golden-ratio * 2.5 !default;
-$h2-font-size: $font-size-base * $golden-ratio * 2.125 !default;
-$h3-font-size: $font-size-base * $golden-ratio * 1.75 !default;
-$h4-font-size: $font-size-base * $golden-ratio * 1.375 !default;
-$h5-font-size: $font-size-base * $golden-ratio * 1 !default;
+$h1-font-size: $font-size-base * $root-golden-ratio * 2.5 !default;
+$h2-font-size: $font-size-base * $root-golden-ratio * 2.125 !default;
+$h3-font-size: $font-size-base * $root-golden-ratio * 1.75 !default;
+$h4-font-size: $font-size-base * $root-golden-ratio * 1.375 !default;
+$h5-font-size: $font-size-base * $root-golden-ratio * 1 !default;
 $h6-font-size: $font-size-lg !default;
 
-$h1-line-height: $line-height-base * $golden-ratio * $golden-ratio /
+$h1-line-height: $line-height-base * $root-golden-ratio * $root-golden-ratio /
   strip-unit($h1-font-size) !default;
-$h2-line-height: $line-height-base * $golden-ratio * $golden-ratio /
+$h2-line-height: $line-height-base * $root-golden-ratio * $root-golden-ratio /
   strip-unit($h2-font-size) !default;
-$h3-line-height: $line-height-base * $golden-ratio * $golden-ratio /
+$h3-line-height: $line-height-base * $root-golden-ratio * $root-golden-ratio /
   strip-unit($h3-font-size) !default;
-$h4-line-height: $line-height-base * $golden-ratio / strip-unit($h4-font-size) !default;
-$h5-line-height: $line-height-base * $golden-ratio / strip-unit($h5-font-size) !default;
+$h4-line-height: $line-height-base * $root-golden-ratio /
+  strip-unit($h4-font-size) !default;
+$h5-line-height: $line-height-base * $root-golden-ratio /
+  strip-unit($h5-font-size) !default;
 $h6-line-height: $line-height-lg !default;
 
 $headings-letter-spacing: 0 !default;
@@ -133,9 +184,9 @@ $display4-size: $h4-font-size !default;
 $display-line-height: 1.2 !default;
 
 $lead-font-size: $spacer !default;
-$lead-line-height: $golden-ratio !default;
+$lead-line-height: $root-golden-ratio !default;
 
-$small-font-size: 100% / $golden-ratio !default;
+$small-font-size: 100% / $root-golden-ratio !default;
 
 $blockquote-font-size: $font-size-base !default;
 
@@ -145,23 +196,69 @@ $list-inline-padding: $spacer-2 !default;
 
 // Tables
 
-$table-cell-padding: $spacer-2 / 2 $spacer-2 !default;
-$table-cell-padding-sm: $spacer-1 / 2 $spacer-1 !default;
+$table-cell-padding: calc(#{$spacer-2} / 2) $spacer-2 !default;
+$table-cell-padding-sm: calc(#{$spacer-1} / 2) $spacer-1 !default;
 
 // Buttons + Forms
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y: $spacer-2 / 2 !default;
+$root-input-btn-padding-y: $root-spacer-2 / 2 !default;
+$input-btn-padding-y: calc(#{$spacer-2} / 2) !default;
+
+$root-input-btn-padding-x: $root-spacer-2 !default;
 $input-btn-padding-x: $spacer-2 !default;
 
 $input-btn-focus-width: $spacer-tiny !default;
 
-$input-btn-padding-y-sm: $spacer-1 / 2 !default;
+$root-input-btn-padding-y-sm: $root-spacer-1 / 2 !default;
+$input-btn-padding-y-sm: calc(#{$spacer-1} / 2) !default;
 $input-btn-padding-x-sm: $spacer-1 !default;
 
-$input-btn-padding-y-lg: $spacer-3 / 2 !default;
+$root-input-btn-padding-y-lg: $root-spacer-3 / 2 !default;
+$input-btn-padding-y-lg: calc(#{$spacer-3} / 2) !default;
 $input-btn-padding-x-lg: $spacer-3 !default;
+
+// Variables used below
+$root-input-padding-y: $root-input-btn-padding-y !default;
+$root-input-padding-x: $root-input-btn-padding-x !default;
+$root-input-padding-y-sm: $root-input-btn-padding-y-sm !default;
+$root-input-padding-y-lg: $root-input-btn-padding-y-lg !default;
+$input-btn-line-height: $line-height-base !default;
+$input-btn-line-height-sm: $line-height-sm !default;
+$input-btn-line-height-lg: $line-height-lg !default;
+$input-line-height: $input-btn-line-height !default;
+$input-line-height-sm: $input-btn-line-height-sm !default;
+$input-line-height-lg: $input-btn-line-height-lg !default;
+$input-btn-border-width: $border-width !default;
+$input-border-width: $input-btn-border-width !default;
+$input-height-border: $input-border-width * 2 !default;
+
+$input-height-inner: add(
+  $input-line-height * 1em,
+  $root-input-padding-y * 2
+) !default;
+$input-height-inner-half: add(
+  $input-line-height * 0.5em,
+  $root-input-padding-y
+) !default;
+$input-height-inner-quarter: add(
+  $input-line-height * 0.25em,
+  $root-input-padding-y / 2
+) !default;
+
+$input-height: add(
+  $input-line-height * 1em,
+  add($root-input-padding-y * 2, $input-height-border, false)
+) !default;
+$input-height-sm: add(
+  $input-line-height-sm * 1em,
+  add($root-input-padding-y-sm * 2, $input-height-border, false)
+) !default;
+$input-height-lg: add(
+  $input-line-height-lg * 1em,
+  add($root-input-padding-y-lg * 2, $input-height-border, false)
+) !default;
 
 // Buttons
 
@@ -174,7 +271,7 @@ $label-margin-bottom: $spacer-2 !default;
 $form-text-margin-top: $spacer-tiny !default;
 
 $form-check-input-gutter: $spacer !default;
-$form-check-input-margin-y: $spacer-2 / 2 !default;
+$form-check-input-margin-y: calc(#{$spacer-2} / 2) !default;
 $form-check-input-margin-x: $spacer-tiny !default;
 
 $form-check-inline-margin-x: $spacer-3 !default;
@@ -186,7 +283,7 @@ $form-group-margin-bottom: $spacer-3 !default;
 $custom-control-gutter: $spacer-2 !default;
 $custom-control-spacer-x: $spacer-3 !default;
 
-$custom-control-indicator-size: $spacer-3 !default;
+$custom-control-indicator-size: $root-spacer-3 !default;
 
 $custom-select-indicator-padding: $spacer-3 !default; // Extra padding to account for the presence of the background-image based indicator
 $custom-select-bg-size: $spacer-2 $spacer-3 !default; // In pixels because image dimensions
@@ -197,37 +294,51 @@ $custom-range-track-border-radius: $spacer-3 !default;
 $custom-range-thumb-width: $spacer-3 !default;
 $custom-range-thumb-border-radius: $spacer-3 !default;
 
+$root-custom-select-padding-y: $root-input-padding-y !default;
+$root-custom-select-padding-x: $root-input-padding-x !default;
+
+$custom-select-feedback-icon-padding-right: add(
+  1em * 0.75,
+  (2 * $root-custom-select-padding-y * 0.75) + $root-custom-select-padding-x +
+    $custom-select-indicator-padding
+) !default;
+
+$custom-range-thumb-focus-box-shadow-width: $root-spacer-tiny * 2 !default;
+
 // Navs
 
-$nav-link-padding-y: $spacer-3 / 2 !default;
+$root-nav-link-padding-y: $root-spacer-3 / 2 !default;
+$nav-link-padding-y: calc(#{$spacer-3} / 2) !default;
 $nav-link-padding-x: $spacer-3 !default;
 
 $nav-divider-margin-y: $spacer-3 !default;
 
 // Navbar
 
-$navbar-padding-y: $spacer / 2 !default;
+$navbar-padding-y: calc(#{$spacer} / 2) !default;
 $navbar-padding-x: $spacer !default;
 $navbar-nav-link-padding-x: $spacer-3 !default;
+$nav-link-height: $font-size-base * $line-height-base + $root-nav-link-padding-y *
+  2 !default;
 
-$navbar-toggler-padding-y: $spacer-1 / 2 !default;
+$navbar-toggler-padding-y: calc(#{$spacer-1} / 2) !default;
 $navbar-toggler-padding-x: $spacer-3 !default;
 
 // Dropdowns
 
 $dropdown-min-width: $spacer-huge !default;
-$dropdown-padding-y: $spacer-3 / 2 !default;
+$dropdown-padding-y: calc(#{$spacer-3} / 2) !default;
 $dropdown-spacer: $spacer-tiny !default;
-$dropdown-item-padding-y: $spacer-2 / 2 !default;
+$dropdown-item-padding-y: calc(#{$spacer-2} / 2) !default;
 $dropdown-item-padding-x: $spacer !default;
 
 // Pagination
 
-$pagination-padding-y: $spacer-3 / 2 !default;
+$pagination-padding-y: calc(#{$spacer-3} / 2) !default;
 $pagination-padding-x: $spacer-3 !default;
-$pagination-padding-y-sm: $spacer-2 / 2 !default;
+$pagination-padding-y-sm: calc(#{$spacer-2} / 2) !default;
 $pagination-padding-x-sm: $spacer-2 !default;
-$pagination-padding-y-lg: $spacer / 2 !default;
+$pagination-padding-y-lg: calc(#{$spacer} / 2) !default;
 $pagination-padding-x-lg: $spacer !default;
 $pagination-line-height: $line-height-base !default;
 
@@ -237,14 +348,14 @@ $jumbotron-padding: $spacer-5 !default;
 
 // Cards
 
-$card-spacer-y: $spacer / 2 !default;
+$card-spacer-y: calc(#{$spacer} / 2) !default;
 $card-spacer-x: $spacer !default;
 
 $card-img-overlay-padding: $spacer !default;
 
 $card-columns-gap: $spacer !default;
 
-$tooltip-padding-y: $spacer-2 / 2 !default;
+$tooltip-padding-y: calc(#{$spacer-2} / 2) !default;
 $tooltip-padding-x: $spacer-2 !default;
 
 $tooltip-arrow-width: $spacer-3 !default;
@@ -252,8 +363,8 @@ $tooltip-arrow-height: $spacer-1 !default;
 
 // Popovers
 
-$popover-max-width: $spacer-huge * $golden-ratio !default;
-$popover-header-padding-y: $spacer-3 / 2 !default;
+$popover-max-width: calc(#{$spacer-huge} * #{$golden-ratio}) !default;
+$popover-header-padding-y: calc(#{$spacer-3} / 2) !default;
 $popover-header-padding-x: $spacer-3 !default;
 
 $popover-arrow-width: $spacer-3 !default;
@@ -261,14 +372,16 @@ $popover-arrow-height: $spacer-2 !default;
 
 // Toasts
 
-$toast-max-width: $spacer-huge * $golden-ratio * $golden-ratio !default;
+$toast-max-width: calc(
+  #{$spacer-huge} * #{$golden-ratio} * #{$golden-ratio}
+) !default;
 $toast-padding-x: $spacer-3 !default;
-$toast-padding-y: $spacer / 2 !default;
+$toast-padding-y: calc(#{$spacer} / 2) !default;
 $toast-font-size: $font-size-base !default;
 
 // Badges
 
-$badge-font-size: 100% / $golden-ratio !default;
+$badge-font-size: 100% / $root-golden-ratio !default;
 $badge-padding-y: $spacer-1 !default;
 $badge-padding-x: $spacer-2 !default;
 
@@ -282,15 +395,15 @@ $modal-inner-padding: $spacer-3 !default;
 
 $modal-footer-margin-between: $spacer-2 !default;
 
-$modal-dialog-margin: $spacer-2 !default;
+$modal-dialog-margin: $root-spacer-2 !default;
 $modal-dialog-margin-y-sm-up: $spacer !default;
 
-$modal-header-padding-y: $spacer-3 / 2 !default;
+$modal-header-padding-y: calc(#{$spacer-3} / 2) !default;
 $modal-header-padding-x: $spacer-3 !default;
 
 // Alerts
 
-$alert-padding-y: $spacer / 2 !default;
+$alert-padding-y: calc(#{$spacer} / 2) !default;
 $alert-padding-x: $spacer !default;
 $alert-margin-bottom: $spacer !default;
 
@@ -300,7 +413,7 @@ $progress-height: $spacer-3 !default;
 
 // List group
 
-$list-group-item-padding-y: $spacer / 2 !default;
+$list-group-item-padding-y: calc(#{$spacer} / 2) !default;
 $list-group-item-padding-x: $spacer !default;
 
 // Image thumbnails
@@ -309,7 +422,7 @@ $thumbnail-padding: $spacer-1 !default;
 
 // Breadcrumbs
 
-$breadcrumb-padding-y: $spacer-3 / 2 !default;
+$breadcrumb-padding-y: calc(#{$spacer-3} / 2) !default;
 $breadcrumb-padding-x: $spacer-3 !default;
 $breadcrumb-item-padding: $spacer-2 !default;
 
@@ -322,7 +435,7 @@ $carousel-indicator-height: $spacer-tiny !default;
 $carousel-indicator-hit-area-height: $spacer-2 !default;
 $carousel-indicator-spacer: $spacer-tiny !default;
 
-$carousel-caption-width: 100% / $golden-ratio !default;
+$carousel-caption-width: 100% / $root-golden-ratio !default;
 
 $carousel-control-icon-width: $spacer !default;
 
@@ -337,10 +450,12 @@ $spinner-border-width-sm: $spacer-1 !default;
 
 // Code
 
-$kbd-padding-y: $spacer-2 / 2 !default;
+$kbd-padding-y: calc(#{$spacer-2} / 2) !default;
 $kbd-padding-x: $spacer-2 !default;
 
-$pre-scrollable-max-height: $spacer-huge * $golden-ratio * $golden-ratio !default;
+$pre-scrollable-max-height: calc(
+  #{$spacer-huge} * #{$golden-ratio} * #{$golden-ratio}
+) !default;
 
 // All remaining bootstrap variables
 @import '~bootstrap/scss/variables';

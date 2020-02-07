@@ -22,3 +22,11 @@
   }
   @return $value;
 }
+
+@function maybe-make-var($val, $var) {
+  @if ($environment == 'production') {
+    @return $val;
+  } @else {
+    @return $var;
+  }
+}

@@ -57,7 +57,7 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                prependData: `$environment: '${process.env.NODE_ENV}'`,
+                prependData: `$environment: '${process.env.NODE_ENV}';`,
             },
         },
     },

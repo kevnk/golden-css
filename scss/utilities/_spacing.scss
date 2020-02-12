@@ -38,19 +38,19 @@
         }
         .mt#{$infix}-n#{$size},
         .my#{$infix}-n#{$size} {
-          margin-top: -$length;
+          margin-top: calc(-1 * #{$length});
         }
         .mr#{$infix}-n#{$size},
         .mx#{$infix}-n#{$size} {
-          margin-right: -$length;
+          margin-right: calc(-1 * #{$length});
         }
         .mb#{$infix}-n#{$size},
         .my#{$infix}-n#{$size} {
-          margin-bottom: -$length;
+          margin-bottom: calc(-1 * #{$length});
         }
         .ml#{$infix}-n#{$size},
         .mx#{$infix}-n#{$size} {
-          margin-left: -$length;
+          margin-left: calc(-1 * #{$length});
         }
       }
     }

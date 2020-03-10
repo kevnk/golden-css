@@ -19,7 +19,8 @@
 }
 
 // To help display grid sizes during development
-html.development {
+html.development,
+html.local {
   body {
     &:after {
       content: 'xxs #{map-get($grid-breakpoints, xxs)}';
@@ -33,9 +34,9 @@ html.development {
       color: #fff;
       font-size: calc(#{$spacer-3} * 0.85);
       line-height: $spacer-3;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-        'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+        'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
       padding: $spacer-2 $spacer-3;
       z-index: 99999999;
       @include media-breakpoint-up(xs) {

@@ -36,7 +36,6 @@
 // col-2 will fit col-1 + col-0
 @each $size, $length in $sizes {
   .col-#{$size} {
-    background: red !important;
     flex: 0 0 map-get($sizes, $size);
     max-width: map-get($sizes, $size);
     // @if (type-of($size) == number and $size > 0) {

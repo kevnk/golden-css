@@ -34,30 +34,33 @@
 // col-4 will fit col-3 + col-2 --OR-- col-2 + col-2 + col-1
 // col-3 will fit col-2 + col-1 --OR-- col-1 + col-1 + col-0
 // col-2 will fit col-1 + col-0
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @each $size, $length in $sizes {
-    .col-#{$size} {
-      width: map-get($sizes, $size);
-      // @if (type-of($size) == number and $size > 0) {
-      @if ($grid-gutter-width != 0) {
-        padding-left: $grid-gutter-width / 2;
-        padding-right: $grid-gutter-width / 2;
-      }
-      // }
+@each $size, $length in $sizes {
+  .col-#{$size} {
+    background: red !important;
+    flex: 0 0 map-get($sizes, $size);
+    max-width: map-get($sizes, $size);
+    // @if (type-of($size) == number and $size > 0) {
+    @if ($grid-gutter-width != 0) {
+      padding-left: $grid-gutter-width / 2;
+      padding-right: $grid-gutter-width / 2;
     }
-    .offset-#{$size} {
-      margin-left: map-get($sizes, $size);
-    }
+    // }
   }
+  .offset-#{$size} {
+    margin-left: map-get($sizes, $size);
+  }
+}
 
+@each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     @each $size, $length in $sizes {
-      [class*='col-'].col-#{$breakpoint}-#{$size} {
-        width: map-get($sizes, $size);
+      .col-#{$breakpoint}-#{$size} {
+        flex: 0 0 map-get($sizes, $size);
+        max-width: map-get($sizes, $size);
       }
-      [class*='offset-'].offset-#{$breakpoint}-#{$size} {
+      .offset-#{$breakpoint}-#{$size} {
         margin-left: map-get($sizes, $size);
       }
     }
